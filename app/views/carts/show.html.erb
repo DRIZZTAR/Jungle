@@ -1,11 +1,17 @@
 <section class="cart-show">
-
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
 
-  <div class="panel panel-default items">
-    <table class="table table-bordered">
+  <% if enhanced_cart.empty? %>
+    <div class="alert alert-info text-center" role="alert">
+      <h4 class="alert-heading">Your Cart is Empty!</h4>
+      <p>Your cart is currently empty. Browse our categories to find something you like!</p>
+      <%= link_to 'Start Shopping', root_path, class: 'btn btn-primary mt-3' %>
+    </div>
+  <% else %>
+    <div class="panel panel-default items">
+      <table class="table table-bordered">
       <thead>
         <tr>
           <th colspan="2">Product</th>
@@ -46,7 +52,7 @@
           data-currency="cad">
         </script>
       <% end %>
+      </div>
     </div>
-  </div>
-
+  <% end %>
 </section>

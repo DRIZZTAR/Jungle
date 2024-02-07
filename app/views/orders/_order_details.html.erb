@@ -1,0 +1,14 @@
+<tbody>
+  <% @order.line_items.each do |line_item| %>
+    <tr>
+      <td>
+        <%= image_tag line_item.product.image.thumb.url, class: "product-image", alt: line_item.product.name %>
+        <%= line_item.product.name %>
+      </td>
+      <td><%= line_item.product.description %></td>
+      <td>$<%= line_item.item_price_cents / 100.0 %></td>
+      <td><%= line_item.quantity %></td>
+      <td>$<%= line_item.total_price_cents / 100.0 %></td>
+    </tr>
+  <% end %>
+</tbody>

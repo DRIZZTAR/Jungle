@@ -1,13 +1,37 @@
 <section class="orders-show">
-
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
   </header>
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
+    <p>Email: <%= @order.email %></p>
   </div>
 
-  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+  <% if @order.line_items.any? %>
+    <div class="panel panel-default items">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Description</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <%= render 'order_details' %>
+        <tfoot>
+          <tr>
+            <th colspan="4">Total:</th>
+            <th>$<%= @order.total_cents / 100.0 %></th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  <% else %>
+    <p>Your order has no items.</p>
+  <% end %>
 
+  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 </section>

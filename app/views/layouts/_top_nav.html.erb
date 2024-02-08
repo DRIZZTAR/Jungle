@@ -34,11 +34,14 @@
             <%# Categories %>
           <%# </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown"> %>
-            <% Category.all.each do |category| %>
-            <li class="nav-item">
-              <%= link_to category.name, category, class: "nav-link" %>
-            </li>
-            <% end %>
+        <% Category.all.each do |category| %>
+          <li class="nav-item">
+            <%= link_to category.name, category_path(category), class: "nav-link" %>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to 'About', about_path, class: "nav-link" %>
+        </li>
           <%# </ul>
         </li> %>
       </ul>

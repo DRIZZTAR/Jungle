@@ -1,17 +1,19 @@
-<h1>Categories</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @categories.each do |category| %>
+<div class="categories-container">
+  <h1>Categories</h1>
+  <table>
+    <thead>
       <tr>
-        <td><%= category.name %></td>
+        <th>Name</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Category', new_admin_category_path, class: 'btn btn-primary' %>
+  <%= link_to 'New Category', new_admin_category_path, class: 'btn btn-primary' %>
+</div>

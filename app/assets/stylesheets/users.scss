@@ -4,12 +4,12 @@
 /* users.scss */
 .signup-form {
   max-width: 400px;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .signup-form h1 {
@@ -23,10 +23,6 @@
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box; /* Makes sure the padding doesn't affect the total width */
-}
-
-.form-control:last-child {
-  margin-bottom: 0;
 }
 
 input[type="text"],

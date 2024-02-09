@@ -29,4 +29,15 @@ class ApplicationController < ActionController::Base
     }
     cookies[:cart]
   end
+  # Method to retrieve the current_user based on session information
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+  end
+  helper_method :current_user
+
+  # Method to redirect user to login page if they are not logged in
+  def authorize
+    redirect_to '/login' unless current_user
+  end
+
 end

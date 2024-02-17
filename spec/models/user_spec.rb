@@ -63,4 +63,31 @@ RSpec.describe User, type: :model do
       expect(duplicate_user.errors.full_messages).to include("Email has already been taken")
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    before do
+      @user = User.create(
+        name: "Example User",
+        email: "user@example.com",
+        password: "password",
+        password_confirmation: "password"
+      )
+    end
+
+    it 'authenticates successfully with correct credentials' do
+      expect(User.authenticate_with_credentials('user@example.com', 'password')).to eq(@user)
+    end
+
+    it 'authenticates successfully with spaces around email' do
+      expect(User.authenticate_with_credentials('  user@example.com  ', 'password')).to eq(@user)
+    end
+
+    it 'authenticates successfully with wrong case email' do
+      expect(User.authenticate_with_credentials('USER@EXAMPLE.COM', 'password')).to eq(@user)
+    end
+
+    it 'returns nil for authentication with incorrect password' do
+      expect(User.authenticate_with_credentials('user@example.com', 'wrongpassword')).to be_nil
+    end
+  end
 end
